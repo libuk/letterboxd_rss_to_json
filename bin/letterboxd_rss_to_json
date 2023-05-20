@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/letterboxd/rss_to_json'
+
+def show_help
+  help = <<-HELP
+    Please include a valid rss file
+    Example: letterboxd_rss_to_json path/to/my_rss_feed.rss
+  HELP
+
+  puts help
+  exit 1
+end
+
+if ARGV.empty? || !File.exists?(ARGV[0])
+  show_help
+end
+
+rss_file = ARGV[0]
+
+rss_to_json = Letterboxd::RssToJson.new(rss_file)
+
+puts rss_to_json.process
+
