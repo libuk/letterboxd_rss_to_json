@@ -2,5 +2,9 @@
 
 source "https://rubygems.org"
 
-gem "pry", "~> 0.14.2", :group => :development
+group :development, :test do
+  gem "pry", "~> 0.14.2"
+  gem "rspec", "~> 3.12"
+end
 
+gem "rss", "~> 0.2.9"

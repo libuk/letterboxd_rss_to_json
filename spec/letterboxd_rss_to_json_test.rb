@@ -1,16 +1,15 @@
-require 'minitest/autorun'
-require_relative '../../lib/letterboxd/rss_to_json'
+require_relative '../lib/letterboxd_rss_to_json'
 
-class Letterboxd::RssToJsonTest < Minitest::Test
-  def setup
-    rss_content = File.read(File.join(__dir__, '../fixtures', 'matilda.rss'))
+RSpec.describe Letterboxd::RssToJson do
+  before do
+    rss_file_path = File.join(__dir__, 'fixtures', 'matilda.rss')
 
-    @rss_to_json = Letterboxd::RssToJson.new(rss_content)
+    @rss_to_json = Letterboxd::RssToJson.new(rss_file_path)
     @result = @rss_to_json.process
   end
 
-  def test_process
-    assert_equal json, @result
+  it "outputs the expected JSON" do
+    expect(@result).to eq json
   end
 
   private
