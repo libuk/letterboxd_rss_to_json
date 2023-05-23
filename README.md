@@ -2,6 +2,8 @@
 
 A program that converts a [letterboxd rss feed](https://letterboxd.com/liburd/rss/) into JSON objects.
 
+![Film poster for The Beasts, 2022](https://a.ltrbxd.com/resized/film-poster/7/6/3/3/2/6/763326-the-beasts-0-600-0-900-crop.jpg?v=4b09b8fe64)
+
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:letterboxd="https://letterboxd.com">
