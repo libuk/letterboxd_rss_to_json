@@ -21,15 +21,15 @@ module Letterboxd
         next if is_list?(guid)
 
         {
-          title: item.at_xpath('letterboxd:filmTitle')&.text,
           film_year: item.at_xpath('letterboxd:filmYear')&.text,
-          published_date: item.at_xpath('pubDate')&.text,
-          url: item.at_xpath('link')&.text,
           image_url: get_image_url(item.at_xpath('description')&.text),
+          published_date: item.at_xpath('pubDate')&.text,
+          rating: get_rating(item.at_xpath('letterboxd:memberRating')&.text),
           review: is_review?(guid) ? get_review(item.at_xpath('description')&.text) : nil,
-          watched_date: item.at_xpath('letterboxd:watchedDate')&.text,
           rewatch: is_rewatch?(item.at_xpath('letterboxd:rewatch')&.text),
-          rating: get_rating(item.at_xpath('letterboxd:memberRating')&.text)
+          title: item.at_xpath('letterboxd:filmTitle')&.text,
+          url: item.at_xpath('link')&.text,
+          watched_date: item.at_xpath('letterboxd:watchedDate')&.text
         }
       end.to_json
     end
