@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.executables = 'letterboxd_rss_to_json'
 
-  s.add_runtime_dependency 'rss', '~> 0.2.9'
+  s.add_runtime_dependency 'nokogiri', '~> 1.15'
 
   s.add_development_dependency 'pry', '~> 0.14.2'
   s.add_development_dependency 'rspec', '~> 3.12'
