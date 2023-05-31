@@ -1,11 +1,11 @@
-require 'rss'
 require 'json'
+require 'nokogiri'
 
 module Letterboxd
   class RssToJson
     def initialize(rss_file_path)
       rss_content = File.read(rss_file_path)
-      @rss_content = RSS::Parser.parse(rss_content, false)
+      @rss_content = Nokogiri::XML(rss_content)
     end
 
     def process
@@ -15,17 +15,22 @@ module Letterboxd
     private
 
     def rss_to_json
-      @json = @rss_content.items.map do |item|
-        guid = item.guid.content
+      @json = @rss_content.xpath('//item').map do |item|
+        guid = item.at_xpath('guid')&.text
 
         next if is_list?(guid)
 
         {
-          title: item.title,
-          date: item.pubDate,
-          url: item.link,
-          image_url: get_image_url(item.description),
-          review: is_review?(guid) ? get_review(item.description) : nil
+          film_year: item.at_xpath('letterboxd:filmYear')&.text,
+          image_url: get_image_url(item.at_xpath('description')&.text),
+          published_date: item.at_xpath('pubDate')&.text,
+          rating: get_rating(item.at_xpath('letterboxd:memberRating')&.text),
+          raw_stars: get_raw_stars(item.at_xpath('title')&.text),
+          review: is_review?(guid) ? get_review(item.at_xpath('description')&.text) : nil,
+          rewatch: is_rewatch?(item.at_xpath('letterboxd:rewatch')&.text),
+          title: item.at_xpath('letterboxd:filmTitle')&.text,
+          url: item.at_xpath('link')&.text,
+          watched_date: item.at_xpath('letterboxd:watchedDate')&.text
         }
       end.to_json
     end
@@ -57,6 +62,19 @@ module Letterboxd
       # join the array elements into a single string with a space (' ') between each element. 
       # This results in a single string containing all the review paragraphs, separated by spaces.
       review = review.join(' ') if review.any?
+
+      # Remove the <p> tags from the resulting string
+      review = review.gsub('<p>', '').gsub('</p>', '') if review
+    end
+
+    def get_rating(rating)
+      has_decimal = rating.include?('.')
+
+      rating_as_number = has_decimal ? rating.to_f : rating.to_i
+    end
+
+    def get_raw_stars(title)
+      title.split('- ')[1]
     end
 
     def is_list?(guid)
@@ -65,6 +83,10 @@ module Letterboxd
 
     def is_review?(guid)
       guid.include?('letterboxd-review')
+    end
+
+    def is_rewatch?(rewatch)
+      rewatch.include?('Yes')
     end
   end
 end

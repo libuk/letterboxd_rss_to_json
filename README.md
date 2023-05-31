@@ -2,8 +2,6 @@
 
 A program that converts a [letterboxd rss feed](https://letterboxd.com/liburd/rss/) into JSON objects.
 
-![Film poster for The Beasts, 2022](https://a.ltrbxd.com/resized/film-poster/7/6/3/3/2/6/763326-the-beasts-0-600-0-900-crop.jpg?v=4b09b8fe64)
-
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:letterboxd="https://letterboxd.com">
@@ -35,11 +33,16 @@ A program that converts a [letterboxd rss feed](https://letterboxd.com/liburd/rs
 ```json
 [
   {
-    "title": "Roald Dahl's Matilda the Musical, 2022 - ★★★★½",
-    "date": "Sun, 07 May 2023 11:00:10 +1200",
-    "url": "https://letterboxd.com/liburd/film/roald-dahls-matilda-the-musical/",
-    "image_url": "https://a.ltrbxd.com/resized/film-poster/5/9/3/2/8/2/593282-roald-dahl-s-matilda-the-musical-0-600-0-900-crop.jpg?v=d0fb13284e",
-    "review": "<p>Didn’t think I’d like it as much as the 1996 film. Not only did it exceed my expectations, but it just might have surpassed the original. Time will tell.</p>"
+    film_year: '2022',
+    image_url: "https://a.ltrbxd.com/resized/film-poster/5/9/3/2/8/2/593282-roald-dahl-s-matilda-the-musical-0-600-0-900-crop.jpg?v=d0fb13284e",
+    published_date: 'Sun, 7 May 2023 11:00:10 +1200',
+    rating: 4.5,
+    raw_stars: '★★★★½',
+    review: "Didn’t think I’d like it as much as the 1996 film. Not only did it exceed my expectations, but it just might have surpassed the original. Time will tell.",
+    rewatch: false,
+    title: "Roald Dahl's Matilda the Musical",
+    url: 'https://letterboxd.com/liburd/film/roald-dahls-matilda-the-musical/',
+    watched_date: '2023-05-06'
   }
 ]
 ```
