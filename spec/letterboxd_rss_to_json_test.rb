@@ -47,6 +47,10 @@ RSpec.describe Letterboxd::RssToJson do
     expect(@result[0][:rating]).to eq expected_json[0][:rating]
   end
 
+  it 'outputs the raw stars' do
+    expect(@result[0][:raw_stars]).to eq expected_json[0][:raw_stars]
+  end
+
   private
 
   def expected_json

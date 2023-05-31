@@ -25,6 +25,7 @@ module Letterboxd
           image_url: get_image_url(item.at_xpath('description')&.text),
           published_date: item.at_xpath('pubDate')&.text,
           rating: get_rating(item.at_xpath('letterboxd:memberRating')&.text),
+          raw_stars: get_raw_stars(item.at_xpath('title')&.text),
           review: is_review?(guid) ? get_review(item.at_xpath('description')&.text) : nil,
           rewatch: is_rewatch?(item.at_xpath('letterboxd:rewatch')&.text),
           title: item.at_xpath('letterboxd:filmTitle')&.text,
@@ -70,6 +71,10 @@ module Letterboxd
       has_decimal = rating.include?('.')
 
       rating_as_number = has_decimal ? rating.to_f : rating.to_i
+    end
+
+    def get_raw_stars(title)
+      title.split('- ')[1]
     end
 
     def is_list?(guid)
