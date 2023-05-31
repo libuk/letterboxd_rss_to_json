@@ -33,16 +33,16 @@ A program that converts a [letterboxd rss feed](https://letterboxd.com/liburd/rs
 ```json
 [
   {
-    film_year: '2022',
-    image_url: "https://a.ltrbxd.com/resized/film-poster/5/9/3/2/8/2/593282-roald-dahl-s-matilda-the-musical-0-600-0-900-crop.jpg?v=d0fb13284e",
-    published_date: 'Sun, 7 May 2023 11:00:10 +1200',
-    rating: 4.5,
-    raw_stars: '★★★★½',
-    review: "Didn’t think I’d like it as much as the 1996 film. Not only did it exceed my expectations, but it just might have surpassed the original. Time will tell.",
-    rewatch: false,
-    title: "Roald Dahl's Matilda the Musical",
-    url: 'https://letterboxd.com/liburd/film/roald-dahls-matilda-the-musical/',
-    watched_date: '2023-05-06'
+    "film_year": "2022",
+    "image_url": "https://a.ltrbxd.com/resized/film-poster/5/9/3/2/8/2/593282-roald-dahl-s-matilda-the-musical-0-600-0-900-crop.jpg?v=d0fb13284e",
+    "published_date": "Sun, 7 May 2023 11:00:10 +1200",
+    "rating": 4.5,
+    "raw_stars": "★★★★½",
+    "review": "Didn’t think I’d like it as much as the 1996 film. Not only did it exceed my expectations, but it just might have surpassed the original. Time will tell.",
+    "rewatch": false,
+    "title": "Roald Dahl's Matilda the Musical",
+    "url": "https://letterboxd.com/liburd/film/roald-dahls-matilda-the-musical/",
+    "watched_date": "2023-05-06"
   }
 ]
 ```
