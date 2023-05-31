@@ -56,5 +56,5 @@ bundle install
 ## Usage
 
 ```bash
-$ ./bin/rss_to_json path/to/my_rss_feed.rss
+$ ./bin/letterboxd_rss_to_json path/to/my_rss_feed.rss
 ```
