@@ -7,4 +7,5 @@ group :development, :test do
   gem "rspec", "~> 3.12"
 end
 
-gem "rss", "~> 0.2.9"
+
+gem "nokogiri", "~> 1.15"
