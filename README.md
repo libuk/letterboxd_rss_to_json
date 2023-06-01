@@ -55,6 +55,9 @@ bundle install
 
 ## Usage
 
+1. Download your letterboxd RSS feed by adding `/rss` to the end of your profile URL like this: https://letterboxd.com/liburd/rss/
+2. Pass the file to the ruby script as below.
+
 ```bash
 $ ./bin/letterboxd_rss_to_json path/to/my_rss_feed.rss
 ```
